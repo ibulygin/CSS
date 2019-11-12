@@ -5,8 +5,14 @@
     display: flex;
     align-items: center;
 
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        min-width: 1104px;
+        margin: auto;
+    }
+
     &__title {
-        margin-left: 88px;
         width: 158px;
         height: 24px;
         display: flex;
@@ -14,7 +20,6 @@
     }
 
     &__log-off {
-        margin-left: 901px;
         height: 16px;
         text-decoration: none;
         color: #9E9E9E;
@@ -23,5 +28,19 @@
         line-height: 16px;
         letter-spacing: 0.9px;
         text-transform: uppercase;
+    }
+}
+
+
+
+@media (max-width: 1360px){
+    .page-header__wrapper{
+        min-width: 824px;
+    }
+}
+
+@media (max-width: 1004px){
+    .page-header__wrapper{
+        margin-left: 40px;
     }
 }
