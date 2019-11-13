@@ -1,0 +1,12 @@
+-var texts = ["SME", "Кредитные и дебетовые продукты", "Автострахование", "Автострахование", "SME", "Кредитные и дебетовые продукты", "Автострахование", "Автострахование"]
+
+mixin profession-product
+    each text in texts
+        div(class="profession__product")
+            div(class='profession__product-wrapper')
+                p(class="profession__product-title")= text
+                div(class="profession__product-img")
+                    img(class="profession__product-icon" src="../img/people.svg" alt="")
+            p(class="profession__product-description") Продажа расчетных счетов и других продуктов клиентам - юрлицам
+
++profession-product

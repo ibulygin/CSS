@@ -1,0 +1,10 @@
+- var href =  ['img/home.svg', 'img/article.svg', 'img/graph.svg', 'img/timetable.svg', 'img/document.svg', 'img/contacts.svg', 'img/settings.svg'];
+- var ImgSrc =  ['img/home.svg', 'img/article.svg', 'img/graph.svg', 'img/timetable.svg', 'img/document.svg', 'img/contacts.svg', 'img/settings.svg'];
+mixin nav-items
+    each src, index in ImgSrc
+        div(class='sidebar__navigation-item navigation-item')
+            a(href=href[index])(class='avigation-item__link')
+                img(src=src)
+
+
++nav-items
