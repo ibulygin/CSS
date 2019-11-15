@@ -1,11 +1,24 @@
-.navigation-item{
-    width: 48px;
-    height: 48px;
+@import '../vars/dimensions.less';
+@import '../vars/colors.less';
+
+.navigation-item {
+    width: @icon-width;
+    height: @icon-heigth;
     border-radius: 50%;
-    // background-color: #F5F5F6;
     
     &__link {
     display: block;
     box-sizing: inherit;
+    }
+
+    &:hover .svg {
+
+        &__background {
+            fill: @is-active-element;
+        }
+
+        &__content {
+            fill:@white-background;
+        }
     }
 }

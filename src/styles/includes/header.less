@@ -1,11 +1,14 @@
+@import '../vars/colors.less';
+@import '../vars/dimensions.less';
+
 .page-header {
     height: 44px;
-    background-color: #F5F5F6;
-    margin-left: 80px;
+    background-color: @gray-background;
+    margin-left: @indent-from-sidebar;
     display: flex;
     align-items: center;
 
-    &__wrapper{
+    &__wrapper {
         display: flex;
         justify-content: space-between;
         min-width: 1104px;
@@ -20,10 +23,11 @@
     }
 
     &__log-off {
-        height: 16px;
+        height: 24px;
+        display: flex;
+        align-items: center;
         text-decoration: none;
-        color: #9E9E9E;
-        font-family: 'Roboto', sans-serif;
+        color: @gray-text;
         font-size: 11px;
         line-height: 16px;
         letter-spacing: 0.9px;
@@ -33,14 +37,14 @@
 
 
 
-@media (max-width: 1360px){
-    .page-header__wrapper{
+@media (max-width: 1360px) {
+    .page-header__wrapper {
         min-width: 824px;
     }
 }
 
-@media (max-width: 1004px){
-    .page-header__wrapper{
+@media (max-width: 1004px) {
+    .page-header__wrapper {
         margin-left: 40px;
     }
 }

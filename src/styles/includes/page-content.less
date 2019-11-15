@@ -1,21 +1,21 @@
-.page__content {
-    margin-left: 80px;
+.page-content {
+    margin-left: @indent-from-sidebar;
     padding-bottom: 74px;
 
-    &-wrapper { 
+    &__wrapper { 
         max-width: 1104px;
         margin: auto;
     }
 }
 
-@media (max-width: 1359px){ 
-    .page__content-wrapper{
-        width: 824px;
+@media (max-width: 1359px) { 
+    .page-content__wrapper {
+        width: @min-width-container;
     }
 }
 
-@media (max-width: 1004px){
-    .page__content-wrapper{
+@media (max-width: 1004px) {
+    .page-content__wrapper {
         margin-left: 40px;
     }
 }

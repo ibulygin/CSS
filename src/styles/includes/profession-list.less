@@ -1,3 +1,4 @@
+@import '../vars/colors.less';
 .profession {
 
     &__list {
@@ -12,42 +13,45 @@
         margin-top: 40px;
         border: 1px solid #E7E8EA;
         border-radius: 8px;
-        font-family:'Roboto', sans-serif;
-        
-        
-        &-wrapper{
-            min-height: 84px;
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 20px 0 20px;
-        }
-
-        &-title {
-            margin-top:12px;
-            width: 384px;
-            padding: 0 auto;
-            font-size: 28px;
-            line-height: 32px;
-        }
-
-        &-description {
-            max-width: 448px;
-            font-size: 15px;
-            line-height: 24px;
-            margin: 0 0 40px 20px;
-        }
-
-        &-img {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background-color: #F5F5F6;
-        }
     }
 }
 
-@media (max-width: 1360px){
-    .profession__list{
+        
+.profession-product {     
+
+    &__wrapper {
+        min-height: 84px;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 20px 0 20px;
+    }
+
+    &__title {
+        margin-top:12px;
+        width: 384px;
+        padding: 0 auto;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    &__description {
+        max-width: 448px;
+        font-size: @text-size;
+        line-height: 24px;
+        margin: 0 0 40px 20px;
+    }
+
+    &__img {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%; 
+        background-color: @gray-background;
+    }
+}
+
+
+@media (max-width: 1360px) {
+    .profession__list {
         justify-content: center;
     }
 }

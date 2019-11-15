@@ -1,38 +1,37 @@
+@import '../vars/colors.less';
+@import '../vars/dimensions.less';
+
 .profession__about {
-
-    &-section {
         margin-top: 56px;
-        display: flex;
-        flex-direction: column;
-        font-family:'Roboto', sans-serif;
-    }
+}
 
-    &-description {
+.profession-about {
+    display: flex;
+    flex-direction: column;
+    color: @main-text;
+    font-size: @text-size;
+
+    &__description {
         margin-top: 16px;
-        font-size: 15px;
-        color: #333333;
     }
 
-    &-title {
-        font-size: 40px;
-        color: #333333;
+    &__title {
+        font-size: @title-text-size;
     }
 
-    &-input {
-
+    &__input {
         height: 56px;
-        font-size: 15px;
-        color: #79818C;
+        color: @input-text-color;
+        font-size: @text-size;
         margin-top: 20px;
         outline: none;
-        border: 1px solid #ECF1F7;
+        border: 1px solid @input-border-color;
         border-radius: 4px;
-        background: url(../img/icon-search.svg) no-repeat 12px #ECF1F7;
-        padding-left: 54px;
+        background: url(../img/icon-search.svg) no-repeat 12px @input-background;
+        padding: 0 54px;
 
         &::placeholder {
-            color: #79818C;
-            font-size: 15px;
+            color: @input-text-color;
         }
 
         &::-webkit-search-cancel-button {
