@@ -1,9 +1,13 @@
+@import '../vars/dimensions.less';
+
 .skills-type {
     display: flex;
     flex-direction: column;
 
     &__wrapper {
         margin-top: 16px;
+        display: flex;
+        justify-content: center;
     }
 
     &__title{
@@ -11,9 +15,21 @@
     }
     &__label {
         margin-top: 16px;
+        width: 336px;
+        height: 56px;
+        border-radius: 4px 0px 0px 4px;
+        border: 1px solid #E7E8EA;
+        background: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: @text-size;
     }
 
     &__radio {
-
+        display: none;
     }
 }
