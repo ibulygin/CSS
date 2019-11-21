@@ -5,20 +5,19 @@
     width: @icon-width;
     height: @icon-heigth;
     border-radius: 50%;
-    
+    background-color: @gray-background;
+    color:  #79818C;
+
+    &:hover{
+        background-color: #959BA4;
+        color: white;
+    }
+
     &__link {
+        display: block; 
+    }
+}
+
+svg {
     display: block;
-    box-sizing: inherit;
-    }
-
-    &:hover .svg {
-
-        &__background {
-            fill: @is-active-element;
-        }
-
-        &__content {
-            fill:@white-background;
-        }
-    }
 }

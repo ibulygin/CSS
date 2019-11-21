@@ -18,27 +18,28 @@
 
         
 .profession-product {     
+    padding: 32px 20px 40px 20px;
+    box-sizing: border-box;
+    word-break: break-word; 
+    padding-bottom: 40px;
 
     &__wrapper {
-        min-height: 84px;
         display: flex;
         justify-content: space-between;
-        margin: 20px 20px 0 20px;
+        min-height: 84px;
     }
 
     &__title {
-        margin-top:12px;
-        width: 384px;
-        padding: 0 auto;
+        margin: 0;
         font-size: 28px;
         line-height: 32px;
+        padding-right: 20px;
     }
 
     &__description {
-        max-width: 448px;
         font-size: @text-size;
         line-height: 24px;
-        margin: 0 0 40px 20px;
+        padding-right: 5px;
     }
 
     &__img {
@@ -51,7 +52,8 @@
 
 
 @media (max-width: 1360px) {
-    .profession__list {
-        justify-content: center;
+    .profession-product {
+        width: 388px;
+        
     }
 }
