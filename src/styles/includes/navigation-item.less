@@ -2,15 +2,15 @@
 @import '../vars/colors.less';
 
 .navigation-item {
-    width: @icon-width;
-    height: @icon-heigth;
-    border-radius: 50%;
-    background-color: @gray-background;
-    color:  #79818C;
+    width: @navigation-icon-side;
+    height: @navigation-icon-side;
+    border-radius: @icon-border-radius;
+    background-color: @icon-background;
+    color: @icon;
 
     &:hover{
-        background-color: #959BA4;
-        color: white;
+        background-color: @icon-hover;
+        color: @icon-background-hover;
     }
 
     &__link {

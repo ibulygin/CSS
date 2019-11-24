@@ -1,6 +1,5 @@
 @import '../vars/colors.less';
 .profession {
-
     &__list {
         display: flex;
         flex-wrap: wrap;
@@ -8,25 +7,30 @@
     }
 
     &__product {
-        width: 528px;
-        min-height: 208px;
         margin-top: 40px;
-        border: 1px solid #E7E8EA;
-        border-radius: 8px;
     }
 }
 
         
-.profession-product {     
+.profession-product {    
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 528px;
     padding: 32px 20px 40px 20px;
-    box-sizing: border-box;
     word-break: break-word; 
-    padding-bottom: 40px;
+    min-height: 208px;
+    border: 1px solid @product-border;
+    border-radius: 8px;
+
+    @media (max-width: @browser-min-width) {
+            flex-basis: 388px;
+            }
 
     &__wrapper {
         display: flex;
         justify-content: space-between;
-        min-height: 84px;
     }
 
     &__title {
@@ -37,23 +41,15 @@
     }
 
     &__description {
-        font-size: @text-size;
         line-height: 24px;
         padding-right: 5px;
     }
 
-    &__img {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%; 
-        background-color: @gray-background;
+    &__icon {
+        width: @product-icon-side;
+        height: @product-icon-side;
+        border-radius: @icon-border-radius; 
+        background-color: @icon-background;
     }
 }
 
-
-@media (max-width: 1360px) {
-    .profession-product {
-        width: 388px;
-        
-    }
-}

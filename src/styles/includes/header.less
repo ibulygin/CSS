@@ -2,44 +2,33 @@
 @import '../vars/dimensions.less';
 
 .page-header {
+    background-color: @header-background;
+    margin-left: @sidebar-width;
+    padding: 0 @container-padding;
     height: 44px;
-    background-color: @gray-background;
-    margin-left: @indent-from-sidebar;
-    padding: 0 40px 0 40px;
 
     &__wrapper {
         height: inherit;
         display: flex;
         justify-content: space-between;
-        width: 1104px;
+        width: @container-max-width;
         margin: auto;
+        align-items: center;
 
-        @media (max-width: 1360px) {
-                width: 824px;
+        @media (max-width: @browser-min-width) {
+            width: @container-min-width;
         }
     }
 
-    &__logo{
+    &__logo {
         display: block;
     }
 
     &__log-off {
-        height: 100%;
         text-decoration: none;
-        color: @gray-text;
+        color: @header-text;
         font-size: 11px;
-        line-height: 44px;
         letter-spacing: 0.9px;
         text-transform: uppercase;
     }
 }
-
-
-
-
-
-// @media (max-width: 1004px) {
-//     .page-header__wrapper {
-//         margin-left: 40px;
-//     }
-// }

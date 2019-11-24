@@ -2,37 +2,40 @@
 @import '../vars/dimensions.less';
 
 .profession-about {
-    display: flex;
-    flex-direction: column;
-    color: @main-text;
-    font-size: @text-size;
-
     &__description {
-        margin: 16px 0 0 0;
+        margin: @indent-from-title 0 0 0;
     }
 
+    &__wrapper{
+        margin-top: @vertical-indent;
+        position: relative;
+    }
+
+    &__svg {
+        position: absolute;
+        top: 23px;
+        left: 12px;
+        display: block;
+    }
     &__title {
         font-size: @title-text-size;
         margin: 0;
     }
 
     &__input {
-        height: 56px;
-        color: @input-text-color;
-        font-size: @text-size;
-        margin-top: 20px;
+        box-sizing: border-box;
+        height: @input-heigth;
+        width: 100%;
+        color: @input-text;
         outline: none;
-        border: 1px solid @input-border-color;
-        border-radius: 4px;
-        background: url(../img/icon-search.svg) no-repeat 12px @input-background;
-        padding: 0 54px;
+        border: none;
+        border-radius: @input-border-radius;
+        background: @input-background;
+        padding-left: @input-right-padding;
+        padding-right: @input-left-padding;
 
         &::placeholder {
-            color: @input-text-color;
-        }
-
-        &::-webkit-search-cancel-button {
-            -webkit-appearance: none;
+            color: @input-text;
         }
     }
 }   

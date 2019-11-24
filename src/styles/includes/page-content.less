@@ -1,33 +1,19 @@
+@import '../vars/dimensions.less';
+
 .page-content {
-    margin-left: @indent-from-sidebar;
-    padding-bottom: 74px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 56px;
+    margin-left: @sidebar-width;
+    padding: 56px @container-padding 74px @container-padding;
 
     &__wrapper { 
-        width: 1104px;
+        width: @container-max-width;
         margin: auto;
+
+        @media (max-width: @browser-min-width) { 
+            width: @container-min-width;
+        }
     }
     &__wrapper_edit{
         width: 672px;
         margin: auto;
     }
-
 }
-
-@media (max-width: 1359px) { 
-    .page-content__wrapper {
-        width: @min-width-container;
-    }
-}
-
-// @media (max-width: 1004px) {
-//     .page-content__wrapper {
-//         margin-left: 40px;
-//     }
-
-//     .page-content__wrapper_edit {
-//         margin-left: 40px;
-//     }
-// }

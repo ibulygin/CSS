@@ -1,14 +1,18 @@
+@import '../vars/dimensions.less';
+@import '../vars/colors.less';
+
 .sidebar {
-    width: 80px;
-    height: 100vh;
+    width: @sidebar-width;
+    height: @height-page;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.12);
-    background-color: #FFFFFF;
+    box-shadow: 0px 4px 48px fade(@black, 12%);
+    background-color: @white;
+    
     &__navigation-item { 
         margin-bottom: 16px;
 
@@ -18,7 +22,7 @@
     }
 
     &__profile {
-        margin-top: 20px;
+        margin-top: @vertical-indent;
     }
 }
 

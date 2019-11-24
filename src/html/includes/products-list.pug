@@ -4,9 +4,8 @@ mixin profession-product
     each text in texts
         div(class="profession__product profession-product")
             div(class='profession-product__wrapper')
-                p(class="profession-product__title")= text
-                div(class="profession-product__img")
-                    img(class="profession-product__icon" src="../img/people.svg" alt="")
+                h2(class="profession-product__title")= text
+                img(class="profession-product__icon" src="../img/people.svg" alt="")
             p(class="profession-product__description") Продажа расчетных счетов и других продуктов клиентам - юрлицам
 
 +profession-product 
