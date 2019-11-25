@@ -1,0 +1,11 @@
+doctype html
+html
+    include includes/base-head.pug
+        include includes/popap-delete-head.pug
+    body
+        div(class='popap-delete')
+            div(class='popap-delete__wrapper')
+                img(class='popap-delete__icon' src='../img/icon-success.svg')
+                h1(class='popap-delete__description') Скилл успешно удален
+                button(class='popap-delete__botton') Продолжить работу
+                img(class='popap-delete__close' src='../img/icon-close.svg')

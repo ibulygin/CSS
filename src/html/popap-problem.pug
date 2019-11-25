@@ -1,0 +1,12 @@
+doctype html
+html
+    include includes/base-head.pug
+        include includes/popap-problem-head.pug
+    body
+        div(class='popap-problem')
+            div(class='popap-problem__wrapper')
+                img(class='popap-problem__icon' src='../img/icon-error.svg')
+                h1(class='popap-problem__title') Скилл успешно удален
+                p(class='popap-problem__description') При загрузке файла произошла ошибка, проверьте файл еще раз.
+                button(class='popap-problem__botton') Продолжить работу
+                img(class='popap-problem__close' src='../img/icon-close.svg')

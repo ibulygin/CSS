@@ -5,15 +5,25 @@
     flex-direction: column;
 
     &__input {
+        box-sizing: border-box;
         margin-top: @vertical-indent;
         height: 56px;
         background: #ECF1F7;
+        border: 0;
         border-radius: 4px;
         outline: none;
         border: 1px solid none;
         padding: 0 16px;
+        padding-top: 16px;
         color: @input-text;
         font-size: @text-size;
+
+        &::placeholder{
+            position:relative;
+            bottom: 18px;
+            font-size: 13px;
+
+        }
     }
 
     &__button {        
