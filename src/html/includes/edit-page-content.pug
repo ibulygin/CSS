@@ -3,24 +3,7 @@ main(class='page-content')
         section(class='edit-skills')
             h1(class='edit-skills__title') Редактирование скилла
             input(class='edit-skills__input' type='text' placeholder='Название скилла')
-            div(class='edit-skills__type skills-type')
-                h2(class='skills-type__title') Тип скилла
-                div(class='skills-type__wrapper')
-                    label(class='skills-type__label')
-                        p() Ручной
-                        input(class='skills-type__radio' type='radio' value='ручной' checked)
-                    label(class='skills-type__label') С очередями телефонии
-                        input(class='skills-type__radio' type='radio' value='ручной')
-            div(class='edit-skills__telephony-queue telephony-queue')
-                h2(class='telephony-queue__title') Очереди телефонии
-                input(class='telephony-queue__input' type='text' placeholder='Очередь телефонии')
-                input(class='telephony-queue__input' type='text' placeholder='Очередь телефонии')
-                button(class='telephony-queue__button') Добавить очередь телефонии
-            div(class='edit-skills__queue-groups queue-groups')
-                h2(class='queue-groups__title') Группы очередей
-                select(class='queue-groups__select' type='text')
-                    option(class='queue-groups__option') Обзвон
-                    option(class='queue-groups__option') Дозвон
-            div(class='edit-skills__save skills-save')
-                button(class='skills-save__save') Сохранить изменения
-                button(class='skills-save__cansel')  Отмена
+            include skills-type.pug
+            include telephony-queue.pug
+            include queue-groups.pug
+            include skills-save.pug
