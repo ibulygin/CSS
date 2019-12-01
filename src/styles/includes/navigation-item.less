@@ -2,22 +2,21 @@
 @import '../vars/colors.less';
 
 .navigation-item {
-    width: @navigation-icon-side;
-    height: @navigation-icon-side;
+    width: @navigation-icon-size;
+    height: @navigation-icon-size;
     border-radius: @icon-border-radius;
     background-color: @icon-background;
-    color: @icon;
+    color: @icon-color;
 
+    & svg {
+        display: block;
+    }
     &:hover{
         background-color: @icon-hover;
         color: @icon-background-hover;
     }
 
     &__link {
-        display: block; 
+        display: block;  
     }
-}
-
-svg {
-    display: block;
 }

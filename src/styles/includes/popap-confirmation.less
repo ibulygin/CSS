@@ -1,0 +1,65 @@
+.popap-confirmation {
+    height: @height-page;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @page-background;
+
+    &__wrapper {
+        position: relative;
+        width: 400px;
+        box-sizing: border-box;
+        box-shadow: 0px 18px 30px fade(@black, 52%);
+        border-radius: @element-wrapper-border-radius;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: @container-padding;
+        background-color: @pop-up-background;
+    }
+
+    &__description {
+        font-size: @popap-title-size;
+        letter-spacing: @popap-letter-spasing;
+        font-weight: bold;
+        margin: 24px 0 0 0;
+        text-align: center;
+    }
+
+    &__wrapper-button{
+        margin-top: 24px;
+        display: flex;
+        width: 100%;
+    }
+
+    &__button-restore {
+        font-size: @font-size;
+        letter-spacing: @popap-letter-spasing;
+        height: @input-heigth;
+        background: @button-restore-background;
+        border-radius: @input-border-radius;
+        border: 1px solid @button-restore-border;
+        outline: none;
+        margin-right: 20px;
+        width: 100%;
+        color: @button-restore-font-color;
+
+    }
+
+    &__button-cancel {
+        font-size: @font-size;
+        letter-spacing: @popap-letter-spasing;
+        height: @input-heigth;
+        background: @button-cansel-background;
+        border-radius: @input-border-radius;
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+
+    & .icon-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+    }
+}

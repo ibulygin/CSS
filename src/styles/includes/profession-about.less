@@ -6,7 +6,7 @@
         margin: @indent-from-title 0 0 0;
     }
 
-    &__wrapper{
+    &__input-wrapper{
         margin-top: @vertical-indent;
         position: relative;
     }
@@ -18,7 +18,7 @@
         display: block;
     }
     &__title {
-        font-size: @title-text-size;
+        font-size: @title-font-size;
         margin: 0;
     }
 
@@ -26,16 +26,16 @@
         box-sizing: border-box;
         height: @input-heigth;
         width: 100%;
-        color: @input-text;
+        color: @input-font-color;
         outline: none;
         border: none;
         border-radius: @input-border-radius;
-        background: @input-background;
+        background-color: @input-font-color;
         padding-left: @input-right-padding;
         padding-right: @input-left-padding;
 
         &::placeholder {
-            color: @input-text;
+            color: @input-font-color;
         }
     }
 }   

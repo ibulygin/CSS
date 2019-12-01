@@ -15,14 +15,14 @@ const jsOrder = require('./src/scripts/order.js');
 let isProd = false;
 
 function htmlTask() {
-    return src(['index.pug', 'editing.pug', 'popap-delete.pug', 'popap-problem.pug'].map(s => join('src/html', s)))
+    return src(['index.pug', 'editing.pug', 'pop-up-delete.pug', 'pop-up-problem.pug', 'pop-up-confirmation.pug'].map(s => join('src/html', s)))
         .pipe(pug())
         .pipe(rename(path => path.dirname = ''))
         .pipe(dest('dist'));
 }
 
 function cssTask() {
-    return src(['index.less', 'editing.less', 'popap-delete.less', 'popap-problem.less'].map(s => join('src/styles', s)))
+    return src(['index.less', 'editing.less', 'pop-up-delete.less', 'pop-up-problem.less', 'pop-up-confirmation.less'].map(s => join('src/styles', s)))
         .pipe(less())
         .pipe(gulpif(() => isProd, minifyCSS()))
         .pipe(rename(path => path.dirname = ''))

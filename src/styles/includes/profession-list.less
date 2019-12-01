@@ -22,7 +22,7 @@
     word-break: break-word; 
     min-height: 208px;
     border: 1px solid @product-border;
-    border-radius: @element-wrapper-borde-radius;
+    border-radius: @element-wrapper-border-radius;
 
     @media (max-width: @browser-min-width) {
             flex-basis: 388px;
@@ -37,7 +37,6 @@
         margin: 0;
         font-size: 28px;
         line-height: 32px;
-        padding-right: 20px;
     }
 
     &__description {
@@ -46,8 +45,9 @@
     }
 
     &__icon {
-        width: @product-icon-side;
-        height: @product-icon-side;
+        margin-left: 20px;
+        width: @product-icon-size;
+        height: @product-icon-size;
         border-radius: @icon-border-radius; 
         background-color: @icon-background;
     }
