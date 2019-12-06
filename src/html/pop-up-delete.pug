@@ -1,11 +1,4 @@
-doctype html
-html
-    include includes/base-head.pug
-        include includes/pop-up-delete-head.pug
-    body
-        div(class='popap-delete')
-            div(class='popap-delete__wrapper')
-                include includes/svg/icon-success.pug
-                h1(class='popap-delete__description') Скилл успешно удален
-                button(class='popap-delete__botton button-confirmation') Продолжить работу
-                include includes/svg/icon-close.pug
+extends ./pop-up-delete.pug
+
+block content
+    
