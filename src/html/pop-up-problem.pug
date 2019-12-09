@@ -1,12 +1,11 @@
-doctype html
-html
-    include includes/base-head.pug
-        include includes/pop-up-problem-head.pug
-    body
-        div(class='popap-problem')
-            div(class='popap-problem__wrapper')
-                include includes/svg/icon-error.pug
-                h1(class='popap-problem__title') Скилл успешно удален
-                p(class='popap-problem__description') При загрузке файла произошла ошибка, проверьте файл еще раз.
-                button(class='popap-problem__botton button-confirmation') Продолжить работу
-                include includes/svg/icon-close.pug
+extends includes/shared/pop-up-template.pug
+
+block head
+    include includes/pop-ups/pop-up-problem-head.pug
+block content
+    include includes/svg/icon-error.pug
+    h1(class='pop-up-problem__title') Скилл успешно удален
+    p(class='pop-up-problem__description') При загрузке файла произошла ошибка, проверьте файл еще раз.
+    button(class='pop-up-problem__button button button_confirmation') Продолжить работу
+    div(class='pop-up-problem__close')
+        include includes/svg/icon-close.pug

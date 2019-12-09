@@ -1,4 +1,10 @@
-extends ./pop-up-delete.pug
+extends includes/shared/pop-up-template.pug
 
+block head
+    include includes/pop-ups/pop-up-delete-head.pug
 block content
-    
+    include includes/svg/icon-success.pug
+    h1(class='pop-up-delete__description') Скилл успешно удален
+    button(class='pop-up-delete__button button button_confirmation') Продолжить работу
+    div(class='pop-up-delete__close')
+        include includes/svg/icon-close.pug

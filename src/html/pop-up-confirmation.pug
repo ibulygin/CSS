@@ -1,13 +1,12 @@
-doctype html
-html
-    include includes/base-head.pug
-        include includes/pop-up-confirmation-head.pug
-    body
-        div(class='popap-confirmation')
-            div(class='popap-confirmation__wrapper')
-                include includes/svg/icon-notofications.pug
-                h1(class='popap-confirmation__description') Вы уверены, что хотите удалить скилл?
-                div(class='popap-confirmation__wrapper-button')
-                    button(class='popap-confirmation__button-restore button-cansel') Восстановить
-                    button(class='popap-confirmation__button-cancel button-confirmation') Удалить
-                include includes/svg/icon-close.pug
+extends includes/shared/pop-up-template.pug
+
+block head
+    include includes/pop-ups/pop-up-confirmation-head.pug
+block content
+    include includes/svg/icon-notofications.pug
+    h1(class='pop-up-confirmation__description') Вы уверены, что хотите удалить скилл?
+    div(class='pop-up-confirmation__wrapper-button')
+        button(class='pop-up-confirmation__button-restore button button_cancel') Восстановить
+        button(class='pop-up-confirmation__button-cancel button button_confirmation') Удалить
+    div(class='pop-up-confirmation__close')
+        include includes/svg/icon-close.pug

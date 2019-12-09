@@ -1,0 +1,36 @@
+@import '../../vars/dimensions.less';
+@import '../../vars/colors.less';
+
+.telephony-queue {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        margin-top: @vertical-indent;
+
+        &_delete {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        &_wrapper {
+            margin-top: @vertical-indent;
+            box-sizing: border-box;
+            position: relative;
+        }
+    }
+
+    &__delete {
+        position: absolute;
+        right: -72px;
+        top: 0;
+    }
+
+    &__button {
+        margin-top: @vertical-indent;
+    }
+
+    &__title {
+        margin: 0;
+    }
+}

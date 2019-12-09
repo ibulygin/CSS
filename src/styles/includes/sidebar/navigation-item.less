@@ -1,0 +1,21 @@
+@import '../../vars/dimensions.less';
+@import '../../vars/colors.less';
+.navigation-item {
+    width: @navigation-icon-size;
+    height: @navigation-icon-size;
+    border-radius: @icon-border-radius;
+    background-color: @icon-background;
+    color: @icon-color;
+
+    & svg {
+        display: block;
+    }
+    &:hover{
+        background-color: @icon-hover;
+        color: @icon-background-hover;
+    }
+
+    &__link {
+        display: block;  
+    }
+}
