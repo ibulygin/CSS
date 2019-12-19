@@ -18,7 +18,7 @@
     &__label {
         flex-basis: 100%;
         height: @input-heigth;
-        border-radius: @input-border-radius;
+        border-radius: @input-border-radius 0 0 @input-border-radius ;
         border: 1px solid @check-box-border-color;
         background: @check-box-background;
         display: flex;
@@ -26,6 +26,15 @@
         justify-content: space-between;
         padding-left: 16px;
         font-size: @font-size;
+        cursor: pointer;
+
+        &_left {
+            border-radius: @input-border-radius 0 0 @input-border-radius ;
+        }
+
+        &_right {
+            border-radius: 0 @input-border-radius @input-border-radius 0;
+        }
     }
 
     &__radio {
