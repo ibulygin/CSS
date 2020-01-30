@@ -11,6 +11,7 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const jsOrder = require('./src/scripts/order.js');
+const babel = require('gulp-babel');
 
 let isProd = false;
 
@@ -38,6 +39,7 @@ function imgTask() {
 function jsTask() {
     return src(jsOrder.map(s => join('src/scripts', s)))
         .pipe(concat('index.js'))
+        .pipe(babel({ presets: ["@babel/preset-env"] }))
         .pipe(gulpif(() => isProd, uglify()))
         .pipe(dest('dist/js'));
 }

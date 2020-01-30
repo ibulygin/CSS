@@ -9,9 +9,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "4.17.1"
+    "@babel/core": "^7.8.4",
+    "Babel": "0.0.1",
+    "express": "4.17.1",
+    "gulp-babel": "^8.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
     "browser-sync": "2.26.7",
     "gulp": "4.0.2",
     "gulp-concat": "2.6.1",

@@ -1,4 +1,6 @@
 module.exports = [
     "app.js",
-    "bootstrap.js"
+    "firebaseInit.js",
+    "httpService.js",
+    "init.js"
 ];
