@@ -1,5 +1,13 @@
-const {src, dest, parallel, watch, series} = require('gulp');
-const {join} = require('path');
+const {
+    src,
+    dest,
+    parallel,
+    watch,
+    series
+} = require('gulp');
+const {
+    join
+} = require('path');
 const less = require('gulp-less');
 const pug = require('gulp-pug');
 const imagemin = require('gulp-imagemin');
@@ -11,7 +19,7 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const jsOrder = require('./src/scripts/order.js');
-const babel = require('gulp-babel');
+const gulpBabel = require('gulp-babel');
 
 let isProd = false;
 
@@ -39,7 +47,9 @@ function imgTask() {
 function jsTask() {
     return src(jsOrder.map(s => join('src/scripts', s)))
         .pipe(concat('index.js'))
-        .pipe(babel({ presets: ["@babel/preset-env"] }))
+        .pipe(gulpBabel({
+            presets: ["@babel/preset-env"]
+        }))
         .pipe(gulpif(() => isProd, uglify()))
         .pipe(dest('dist/js'));
 }
