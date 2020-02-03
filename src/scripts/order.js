@@ -1,7 +1,9 @@
 module.exports = [
     "app.js",
+    "view.js",
+    "findASubstring.js",
     "firebaseInit.js",
     "httpService.js",
-    "view.js",
+    "slillsPage.js",
     "init.js"
 ];
