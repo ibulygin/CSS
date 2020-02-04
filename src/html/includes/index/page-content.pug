@@ -7,13 +7,13 @@ main(class='page-content')
         
 script(id="headerTemplate" type="text/template")
         | {{#each this}}
-        | <div class="profession__product profession-product">
+        | <a class="profession__product profession-product" href="#id={{id}}">
         |    <div class='profession-product__wrapper'>
         |        <h2 class="profession-product__title"> {{name}}</h2>
         |        <img class="profession-product__icon" src="../img/people.svg" alt="">
         |    </div>
         |    <p class="profession-product__description"> {{description}}</p>
-        | </div>        
+        | </a>        
         | {{/each}}
 
 script(id="searchInputTemplate" type="text/template")
