@@ -1,61 +1,11 @@
 main(class='page-content')
     div(class='page-content__wrapper')
-        //- section(class='edit-skills')
-        //-     h1(class='edit-skills__title') Редактирование скилла
-        //-     input(class='edit-skills__input input' type='text' placeholder='Название скилла')
-        //-     include skills-type.pug
-        //-     include telephony-queue.pug
-        //-     include queue-groups.pug
-        //-     include skills-save.pug
-//- script(id="editTemplate" type="text/template")
-//-         section(class='edit-skills')
-//-             h1(class='edit-skills__title') Редактирование скилла
-//-             input(class='edit-skills__input input' type='text' placeholder='Название скилла')
-//-             include skills-type.pug
-//-             {{#each this}}
-//-             include telephony-queue.pug
-//-             {{/each}}
-//-             include queue-groups.pug
-//-             include skills-save.pug
-
+        
 script(id="editTemplate" type="text/template")
-    <section class='edit-skills'>
-        <h1 class='edit-skills__title'>Редактирование скилла</h1>
-        <input class='edit-skills__input input' type='text' placeholder={{name}}>
-        <div class="edit-skills__type skills-type">
-            <h2 class="skills-type__title">Тип скилла</h2>
-            <div class="skills-type__wrapper">
-                <label class="skills-type__label skills-type__label_left">Ручной
-                    <input class="skills-type__radio" type="radio" value="ручной" checked>
-                </label>
-                <label class="skills-type__label skills-type__label_right">С очередями телефонии
-                    <input class="skills-type__radio" type="radio" value="ручной">
-                </label>
-            </div>
-        </div>
-        <div class="edit-skills__telephony-queue telephony-queue">
-            <h2 class="telephony-queue__title">Очереди телефонии</h2>
-            <input class="telephony-queue__input input" type="text" placeholder="Очередь телефонии">
-            <div class="telephony-queue__input-wrapper">
-                <input class="telephony-queue__input input" type="text" placeholder="Очередь телефонии">
-                <div class="telephony-queue__delete">
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="56" height="56" rx="4" fill="#ECF1F7" />
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M25.9908 20C25.9981 20 26 22 26 22H30V20H25.9908ZM32 22H35C35.5523 22 36 22.4477 36 23C36 23.5523 35.5523 24 35 24H21C20.4477 24 20 23.5523 20 23C20 22.4477 20.4477 22 21 22H24V19.999C24 18.8982 24.8954 18 25.9908 18H30.0092C31.1114 18 32 18.8931 32 19.999V22ZM21.005 27.0995L21.805 35.0999C21.9667 36.7167 23.3749 38 24.9996 38H31.0004C32.6216 38 34.033 36.7201 34.195 35.0999L34.995 27.0995C35.05 26.55 34.649 26.0599 34.0995 26.005C33.55 25.95 33.0599 26.351 33.005 26.9005L32.2049 34.9009C32.1451 35.4996 31.5933 36 31.0004 36H24.9996C24.4054 36 23.8548 35.4982 23.7951 34.9009L22.995 26.9005C22.9401 26.351 22.45 25.95 21.9005 26.005C21.351 26.0599 20.95 26.55 21.005 27.0995Z" fill="#1771E6" />
-                    </svg>
-                </div>
-            </div>
-                <button class="telephony-queue__button button button_cancel">Добавить очередь телефонии</button>
-        </div>
-        <div class="edit-skills__queue-groups queue-groups">
-            <h2 class="queue-groups__title">Группы очередей</h2>
-            <select class="queue-groups__select" type="text">
-                <option class="queue-groups__option">Обзвон</option>
-                <option class="queue-groups__option">Дозвон</option>
-            </select>
-        </div>
-        <div class="edit-skills__save skills-save">
-            <button class="skills-save__save button button_confirmation ">Сохранить изменения</button>
-            <button class="skills-save__cancel button button_cancel"> Отмена</button>
-        </div>
-    </section>
+        section(class='edit-skills')
+            h1(class='edit-skills__title') Редактирование скилла 
+            input(class='edit-skills__input input' type='text' placeholder='{{name}}')
+            include skills-type.pug
+            include telephony-queue.pug
+            include queue-groups.pug
+            include skills-save.pug

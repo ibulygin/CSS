@@ -1,5 +1,6 @@
 div(class='edit-skills__queue-groups queue-groups')
     h2(class='queue-groups__title') Группы очередей
     select(class='queue-groups__select' type='text')
-        option(class='queue-groups__option') Обзвон
-        option(class='queue-groups__option') Дозвон
+        | {{#each this.queueGroups}}
+        | <option class='queue-groups__option'> {{this}} </option>
+        | {{/each}}

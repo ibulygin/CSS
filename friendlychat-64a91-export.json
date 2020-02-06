@@ -1,0 +1,55 @@
+{
+  "skills": [{
+    "description": "Коронавирус лег на папирус",
+    "id": "1",
+    "name": "SME",
+    "queueGroups": ["users", "operators"],
+    "telephonyQueues": [{
+        "name": "Очередь для исходящих"
+      },
+      {
+        "name": "Очередь для входящих "
+      }
+    ],
+    "type": "manual"
+  }, {
+    "description": "Коронавирус лег на папирус",
+    "id": "2",
+    "name": "Автострахование",
+    "queueGroups": ["operators"],
+    "telephonyQueues": [{
+        "name": "Очередь для исходящих"
+      },
+      {
+        "name": "Очередь для входящих "
+      }
+    ],
+    "type": "telephone line"
+  }, {
+    "description": "Коронавирус лег на папирус",
+    "id": "3",
+    "name": "Телемаркетинг",
+    "queueGroups": ["users"],
+    "telephonyQueues": [{
+        "name": "Очередь для исходящих"
+      },
+      {
+        "name": "Очередь для входящих "
+      }
+    ],
+    "type": "manual"
+  }, {
+    "description": "Коронавирус лег на папирус",
+    "id": "4",
+    "name": "Collection",
+    "queueGroups": ["users", "operators"],
+    "telephonyQueues": [{
+        "name": "Очередь для исходящих"
+      },
+      {
+        "name": "Очередь для входящих "
+      }
+    ],
+    "type": "telephone line"
+  }]
+}
