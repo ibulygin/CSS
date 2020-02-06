@@ -1,5 +1,15 @@
 (function() {
-    let firebase = app.firebase;
+    let firebaseConfig = {
+        apiKey: "AIzaSyDOzkNWaR0wSBDQgdVTkUGBMkw_XkRG4wY",
+        authDomain: "friendlychat-64a91.firebaseapp.com",
+        databaseURL: "https://friendlychat-64a91.firebaseio.com",
+        projectId: "friendlychat-64a91",
+        storageBucket: "friendlychat-64a91.appspot.com",
+        messagingSenderId: "169400327809",
+        appId: "1:169400327809:web:59d1ce423a252a2665f780"
+      };
+    // Initialize Firebase
+    app.firebase = firebase.initializeApp(firebaseConfig);
 
     function HttpService() {
         this.firebase = firebase.database();
@@ -38,5 +48,19 @@
         })
     };
 
+    function View() {};
+
+    View.prototype.render = function (templateName, model) {
+        templateName = templateName + 'Template';
+
+        const templateElement = document.getElementById(templateName);
+        const templateSource = templateElement.innerHTML;
+        const renderFn = Handlebars.compile(templateSource);
+
+        return renderFn(model);
+    };
+
+    app.View = View;
     app.HttpService = HttpService;
+
 })(app);

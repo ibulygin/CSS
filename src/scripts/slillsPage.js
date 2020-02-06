@@ -1,7 +1,11 @@
 (function () {
-    const findASubstring = app.findASubstring;
     const HttpService = app.HttpService;
     const View = app.View;
+    let http = new HttpService();
+    let hi = new View();
+    let div = document.querySelector(".profession__list");
+    let abouProf = document.querySelector(".profession-about__input-wrapper");
+
     function Skills() {
         this.input = document.querySelector('.profession-about__input');
         this.value = this.input.value.trim();
@@ -23,7 +27,6 @@
 
                     self.render('header', rez);
                 });
-            this.skills.innerHTML = "погодите..."
         })
     }
 
@@ -33,5 +36,19 @@
         let element = view.render(template, data);
         lists.innerHTML = element;
     }
-    app.Skills = Skills;
+    
+    http.getData()
+        .then((data) => {
+            let child = hi.render('header', data);
+            let input = hi.render('searchInput');
+            abouProf.innerHTML = input;
+            div.innerHTML = child;
+            return data;
+        })
+        .then((data) => {
+            let inputValue = new Skills();
+            inputValue.init();
+        });
+        
+    div.innerHTML = "подождите..."
 })(app);

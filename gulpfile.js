@@ -18,13 +18,12 @@ const gulpif = require('gulp-if');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
-const jsOrder = require('./src/scripts/order.js');
 const gulpBabel = require('gulp-babel');
 
 let isProd = false;
 
 function htmlTask() {
-    return src(['index.pug', 'editing.pug', 'pop-up-delete.pug', 'pop-up-problem.pug', 'pop-up-confirmation.pug'].map(s => join('src/html', s)))
+    return src(['index.pug', 'edit.pug', 'pop-up-delete.pug', 'pop-up-problem.pug', 'pop-up-confirmation.pug'].map(s => join('src/html', s)))
         .pipe(pug())
         .pipe(rename(path => path.dirname = ''))
         .pipe(dest('dist'));
@@ -44,9 +43,19 @@ function imgTask() {
         .pipe(dest('dist/img'));
 }
 
-function jsTask() {
-    return src(jsOrder.map(s => join('src/scripts', s)))
+function indexJsTask() {
+    return src(['app.js', 'common.js', 'slillsPage.js'].map(s => join('src/scripts', s)))
         .pipe(concat('index.js'))
+        .pipe(gulpBabel({
+            presets: ["@babel/preset-env"]
+        }))
+        .pipe(gulpif(() => isProd, uglify()))
+        .pipe(dest('dist/js'));
+}
+
+function editJsTask() {
+    return src(['app.js', 'common.js', 'editPage.js'].map(s => join('src/scripts', s)))
+        .pipe(concat('edit.js'))
         .pipe(gulpBabel({
             presets: ["@babel/preset-env"]
         }))
@@ -57,14 +66,18 @@ function jsTask() {
 function serve() {
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./dist",
+            routes: {
+                "/edit": "./dist/edit.html"
+            }
         }
     });
 
     watch('src/img/*', imgTask);
     watch('src/styles/**/*.less', cssTask);
     watch('src/html/**/*.pug', htmlTask);
-    watch('src/scripts/**/*.js', jsTask)
+    watch('src/scripts/**/*.js', indexJsTask)
+    watch('src/scripts/**/*.js', editJsTask)
 
     watch("dist/**/*")
         .on('change', browserSync.reload);
@@ -80,6 +93,6 @@ function enableProd(cb) {
 }
 
 module.exports = {
-    serve: series(clean, parallel(htmlTask, cssTask, imgTask, jsTask), serve),
-    default: series(enableProd, clean, parallel(htmlTask, cssTask, imgTask, jsTask))
+    serve: series(clean, parallel(htmlTask, cssTask, imgTask, indexJsTask, editJsTask), serve),
+    default: series(enableProd, clean, parallel(htmlTask, cssTask, imgTask, indexJsTask, editJsTask))
 };
