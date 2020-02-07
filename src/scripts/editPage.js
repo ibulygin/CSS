@@ -39,18 +39,27 @@
         return updatedArray;
     }
 
+    function deleteItem(data, id){
+        return data.filter((item)=>item.id !== id)
+    }
+        
+
     EditPage.prototype.listen = function(data) {
         let self = this;
         this.btnSave.addEventListener('click', function() {
-            console.log(updateProperty.call(self, data, self.getChengeData(self.description)));
+            let newObject = updateProperty.call(self, data, self.getChengeData(self.description));
+            http.update(newObject);
         });
         this.btnDelete.addEventListener('click', function() {
-            console.log("del");
-
+            // console.log(self.id);
+            // http.remove(self.id);
+            let newObj = deleteItem.call(self, data, self.id);
+            http.update(newObj)
         });
         this.btnCancel.addEventListener('click', function() {
-            console.log("cancel");
-
+            let url = location.origin;
+            location.replace(url);
+            
         });
     }
 
@@ -68,14 +77,22 @@
         
     };
     function getElementById(data, id) {
-        return data.find((element => element.id === id))
-
+        let rez = null;
+        data.map((element => {
+            if (element.id === id){
+                rez = element
+            }
+        }))
+        return rez;
  };
     
     (function(){
         http.getData()
             .then((data) => {
-                let elementDAta = getElementById(data, getId())
+                let id = getId();
+                console.log(id)
+                let elementDAta = getElementById(data, id)
+                console.log(elementDAta);
                 let child = view.render('edit', elementDAta);
                 div.innerHTML = child;
                 return data  

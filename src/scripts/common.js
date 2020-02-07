@@ -24,7 +24,7 @@
     };
 
     HttpService.prototype.update = function(obj) {
-        firebase.database().ref('skills/').update(obj)
+        firebase.database().ref('skills/').set(obj)
         .then(function() {
             console.log('Set succeeded');
         })
