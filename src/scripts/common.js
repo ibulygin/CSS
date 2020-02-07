@@ -23,14 +23,8 @@
         });
     };
 
-    HttpService.prototype.getElementById = function(id) {
-       return this.getData().then((data) => {
-           return data.find((element => element.id === id))
-       })
-    };
-
-    HttpService.prototype.set = function(id, obj) {
-        firebase.database().ref('skills/' + id).update(obj)
+    HttpService.prototype.update = function(obj) {
+        firebase.database().ref('skills/').update(obj)
         .then(function() {
             console.log('Set succeeded');
         })

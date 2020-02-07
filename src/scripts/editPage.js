@@ -15,7 +15,7 @@
         return arr.map((item)=> item.value);
     }
 
-    function EditPage(){
+    function EditPage(data){
         this.id = getId();
         this.skillName = document.querySelector('.edit-skills__input');
         this.skillType = document.querySelector('.skills-type__radio');
@@ -25,14 +25,24 @@
         this.btnSave = document.querySelector('.skills-save__save');
         this.btnCancel = document.querySelector('.skills-save__cancel');
         this.btnDelete = document.querySelector('.skills-save__delete');
-        this.btnAddTelephonyQueue = document.querySelector('.telephony-queue__button')
+        this.btnAddTelephonyQueue = document.querySelector('.telephony-queue__button');
+        this.description = getElementById(data, this.id);
     };
+
+    function updateProperty(data, newElement){
+        let updatedArray = data.map((item)=>{
+            if(item.id === this.id){
+                item = newElement;
+            }
+            return item
+        });
+        return updatedArray;
+    }
 
     EditPage.prototype.listen = function(data) {
         let self = this;
         this.btnSave.addEventListener('click', function() {
-            http.set(this.id, self.getChengeData(data));
-            // console.log(self.getChengeData(data))
+            console.log(updateProperty.call(self, data, self.getChengeData(self.description)));
         });
         this.btnDelete.addEventListener('click', function() {
             console.log("del");
@@ -57,18 +67,22 @@
           }
         
     };
+    function getElementById(data, id) {
+        return data.find((element => element.id === id))
+
+ };
     
     (function(){
-        http.getElementById(getId())
+        http.getData()
             .then((data) => {
-                let child = view.render('edit', data);
+                let elementDAta = getElementById(data, getId())
+                let child = view.render('edit', elementDAta);
                 div.innerHTML = child;
-                console.log(data);
                 return data  
             })
             .then((data) => {
-                let editPage = new EditPage();
-                editPage.listen(data)
+                let editPage = new EditPage(data);
+                editPage.listen(data);
             })
     })();
     app.EditPage = EditPage;
