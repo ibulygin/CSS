@@ -4,7 +4,7 @@ main(class='page-content')
 script(id="editTemplate" type="text/template")
         section(class='edit-skills')
             h1(class='edit-skills__title') Редактирование скилла 
-            input(class='edit-skills__input input' type='text' placeholder='{{name}}')
+            input(class='edit-skills__input input' type='text' value='{{name}}')
             include skills-type.pug
             include telephony-queue.pug
             include queue-groups.pug

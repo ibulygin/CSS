@@ -1,7 +1,7 @@
 div(class='edit-skills__telephony-queue telephony-queue')
     h2(class='telephony-queue__title') Очереди телефонии
     | {{#each this.telephonyQueues}}
-    | <input class='telephony-queue__input input' type='text' placeholder = '{{this}}'>
+    | <input class='telephony-queue__input input' type='text' value = '{{this}}'>
     | {{/each}}
     div(class='telephony-queue__input-wrapper')
         input(class='telephony-queue__input input' type='text' placeholder='Очередь телефонии')
