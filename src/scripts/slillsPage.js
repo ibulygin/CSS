@@ -1,37 +1,35 @@
 (function () {
     const HttpService = app.HttpService;
     const View = app.View;
-    let http = new HttpService();
-    let hi = new View();
-    let div = document.querySelector(".profession__list");
-    let abouProf = document.querySelector(".profession-about__input-wrapper");
-    let PopUp = app.PopUp;
-    let popUp = new PopUp();
-    let view = new View();
+    const PopUp = app.PopUp;
+    const http = new HttpService();
+    const popUp = new PopUp();
+    const view = new View();
+    const skills = new Skills()
+    
     function Skills() {
         this.input = document.querySelector('.profession-about__input');
-        this.value = this.input.value.trim();
-        this.skills = document.querySelector('.profession__list')
+        this.skills = document.querySelector('.profession__list');
+        this.professionList = document.querySelector(".profession__list");
+        this.professionAboutInputContainer = document.querySelector(".profession-about__input-wrapper");
     };
 
-    Skills.prototype.init = function () {
+    Skills.prototype.listen = function (data) {
         let self = this;
+
         this.input.addEventListener('keyup', function () {
-            let http = new HttpService();
+            
+            let rez = data.filter((element) => {
+                let inputValue = self.input.value.trim().toUpperCase();
+                let name = element.name.toUpperCase();
 
-            http.getData()
-                .then((data) => {
-                    let rez = data.filter((element) => {
-                        let value = this.value.toUpperCase();
-                        let name = element.name.toUpperCase();
-                        return name.includes(value);
-                    });
+                return name.includes(inputValue);
+            });
 
-                    self.render('header', rez);
-                });
+            self.render('profession', rez);
         })
         popUp.popUpDeleteConfirmationBtn.addEventListener('click', function() {
-            view.showPopUp();
+            popUp.showPopUp();
             localStorage.isDeleted = false;
         })
     }
@@ -43,26 +41,27 @@
         lists.innerHTML = element;
     }
     
-    http.getData()
-        .then((data) => {
-            console.log("Загружвю...");
-            console.log("skills  localStorage = "+localStorage.isDeleted);
-            if(localStorage.isDeleted === "true"){
-                let view = new View();
-                view.showPopUp();
-                console.log("localStorage есть")
-            }
-            let child = hi.render('header', data);
-            let input = hi.render('searchInput');
+    function init() {
+        http.getData()
+            .then((data) => {
+                if(localStorage.isDeleted === "true"){
+                    popUp.showPopUp();
+                }
+                // const skills = new Skills()
+                let professions = view.render('profession', data);
+                let input = view.render('searchInput');
 
-            abouProf.innerHTML = input;
-            div.innerHTML = child;
-            return data;
-        })
-        .then((data) => {
-            let inputValue = new Skills();
-            inputValue.init();
-        });
-        
-    div.innerHTML = hi.render('loader');
+                skills.professionAboutInputContainer.innerHTML = input;
+                skills.professionList.innerHTML = professions;
+                return data;
+            })
+            .then((data) => {
+                const skills = new Skills()
+                skills.listen(data);
+            });
+    };
+
+    init();
+    
+    skills.professionList.innerHTML = view.render('loader');
 })(app);

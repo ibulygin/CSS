@@ -24,25 +24,8 @@
     };
 
     HttpService.prototype.update = function(obj) {
-        // firebase.database().ref('skills/').set(obj)
-        // .then(function() {
-        //     console.log('Set succeeded');
-        // })
-        // .catch(function(error){
-        //     console.log('Remove faled: '+ error.massage)
-        // });
-
         return new Promise(resolve => {
             resolve(firebase.database().ref('skills/').set(obj));
-        })
-    };
-
-    HttpService.prototype.remove = function(id) {
-        this.firebase.ref('skills/' + id).remove().then(function(){
-            console.log('Remove succeeded')
-        })
-        .catch(function(error) {
-            console.log('Remove faled: ' + error.massage)
         })
     };
 
@@ -58,17 +41,16 @@
         return renderFn(model);
     };
 
-    View.prototype.showPopUp = function() {
-        let popUp = new PopUp();
-        popUp.self.classList.toggle('pop-up-template__invisible');
-    };
-
     function PopUp() {
         this.self = document.querySelector('.pop-up-template');
         this.closeBtn = document.querySelector('.pop-up-confirmation__close');
         this.cancelBtn = document.querySelector('.pop-up-confirmation__button-restore');
         this.confirmationBtn = document.querySelector('.pop-up-confirmation__button-cancel');
         this.popUpDeleteConfirmationBtn = document.querySelector('.pop-up-delete__button');
+    };
+
+    PopUp.prototype.showPopUp = function() {
+        this.self.classList.toggle('pop-up-template__invisible');
     }
 
     app.View = View;
