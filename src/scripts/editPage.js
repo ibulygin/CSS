@@ -67,7 +67,7 @@
         let self = this;
         this.btnSave.addEventListener('click', function () {
             let newObject = updateProperty.call(self, data, self.getChengeData(self.description));
-            self.btnSave.innerHTML = view.render('loader');
+            self.btnSave.innerHTML = view.render('btnLoader');
             self.btnSave.disabled = true;
             http.update(newObject)
                 .then(() => {
