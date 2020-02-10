@@ -2,10 +2,12 @@ doctype html
 html
     include includes/shared/base-head.pug
         include includes/editing/editing-head.pug
+        include includes/pop-ups/pop-up-confirmation-head.pug
     body
         include includes/sidebar/sidebar.pug
         include includes/shared/header.pug
         include includes/editing/edit-page-content.pug
+        include pop-up-confirmation.pug
         script(src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js")
         script(src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js")
         script(src='js/edit.js')

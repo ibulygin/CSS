@@ -2,10 +2,13 @@ doctype html
 html
     include includes/shared/base-head.pug
         include includes/index/index-head.pug
+        include includes/pop-ups/pop-up-delete-head.pug
     body
         include includes/sidebar/sidebar.pug
         include includes/shared/header.pug
         include includes/index/page-content.pug
+        include pop-up-delete.pug
+        
         script(src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js")
         script(src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js")
         script(src='js/index.js')

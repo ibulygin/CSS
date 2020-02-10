@@ -1,8 +1,11 @@
 (function() {
     let HttpService = app.HttpService;
     let View = app.View;
+    let PopUp = app.PopUp;
+    let popUp = new PopUp();
     let http = new HttpService();
     let view = new View();
+    localStorage.isDeleted = false;
     let div = document.querySelector('.page-content__wrapper');
 
     function getId() {
@@ -18,7 +21,7 @@
     function EditPage(data){
         this.id = getId();
         this.skillName = document.querySelector('.edit-skills__input');
-        this.skillType = document.querySelector('.skills-type__radio');
+        this.skillType = document.querySelectorAll('.skills-type__radio');
         this.telephonyQueue = document.querySelectorAll('.telephony-queue__input');
         //This is select but may be, has to use option
         this.queueGroups = document.querySelectorAll('.queue-groups__option');
@@ -28,6 +31,24 @@
         this.btnAddTelephonyQueue = document.querySelector('.telephony-queue__button');
         this.description = getElementById(data, this.id);
     };
+
+    function getSkillType(skillType) {
+        let skills = skillType;
+        for(let i=0; i<skills.length; i++){
+            if (skills[i].checked) {
+                return skills[i].value
+            }
+        }
+    };
+
+    function getQueueGroups(queueGroups) {
+        let groups = queueGroups;
+        for(let i=0; i<groups.length; i++){
+            if (groups[i].selected === true) {
+                return groups[i].value
+            }
+        }
+    }
 
     function updateProperty(data, newElement){
         let updatedArray = data.map((item)=>{
@@ -48,19 +69,46 @@
         let self = this;
         this.btnSave.addEventListener('click', function() {
             let newObject = updateProperty.call(self, data, self.getChengeData(self.description));
-            http.update(newObject);
+            console.log();
+            self.btnSave.innerHTML = view.render('loader');
+            self.btnSave.disabled = false;
+            http.update(newObject)
+                .then(() => {
+                    console.log(getElementById(data, self.id));
+                    init();
+            });
         });
         this.btnDelete.addEventListener('click', function() {
-            // console.log(self.id);
             // http.remove(self.id);
-            let newObj = deleteItem.call(self, data, self.id);
-            http.update(newObj)
+            // let newObj = deleteItem.call(self, data, self.id);
+            // http.update(newObj)
+            view.showPopUp();
         });
         this.btnCancel.addEventListener('click', function() {
             let url = location.origin;
             location.replace(url);
             
         });
+        popUp.closeBtn.addEventListener('click', function() {
+            view.showPopUp();
+        });
+        popUp.confirmationBtn.addEventListener('click', function() {
+
+            // http.remove(self.id);
+            let newObj = deleteItem.call(self, data, self.id);
+            http.update(newObj)
+                .then(()=>{
+                    let url = location.origin;
+                    location.replace(url);
+                    
+                })
+                
+                localStorage.isDeleted = true;
+
+        });
+        popUp.cancelBtn.addEventListener('click', function() {
+            view.showPopUp();
+        })
     }
 
     EditPage.prototype.getChengeData = function(data) {
@@ -72,7 +120,8 @@
             "queueGroups" : nodeListToArray(this.queueGroups),
             //!!!НЕ ЗАБЫТЬ вытащить значения и преобразовать в массив
             "telephonyQueues" : nodeListToArray(this.telephonyQueue),
-            "type" : this.skillType
+            "type" : getSkillType(this.skillType),
+            "selectedQueueGroups": getQueueGroups(this.queueGroups)
           }
         
     };
@@ -86,13 +135,14 @@
         return rez;
  };
     
-    (function(){
+    function init(){
         http.getData()
             .then((data) => {
+
                 let id = getId();
-                console.log(id)
+
                 let elementDAta = getElementById(data, id)
-                console.log(elementDAta);
+
                 let child = view.render('edit', elementDAta);
                 div.innerHTML = child;
                 return data  
@@ -101,6 +151,8 @@
                 let editPage = new EditPage(data);
                 editPage.listen(data);
             })
-    })();
+    };
+    init();
+    div.innerHTML =  view.render('loader');
     app.EditPage = EditPage;
 })(app);

@@ -5,7 +5,9 @@
     let hi = new View();
     let div = document.querySelector(".profession__list");
     let abouProf = document.querySelector(".profession-about__input-wrapper");
-
+    let PopUp = app.PopUp;
+    let popUp = new PopUp();
+    let view = new View();
     function Skills() {
         this.input = document.querySelector('.profession-about__input');
         this.value = this.input.value.trim();
@@ -28,10 +30,14 @@
                     self.render('header', rez);
                 });
         })
+        popUp.popUpDeleteConfirmationBtn.addEventListener('click', function() {
+            view.showPopUp();
+            localStorage.isDeleted = false;
+        })
     }
 
     Skills.prototype.render = function (template, data) {
-        let view = new View();
+        
         let lists = document.querySelector('.profession__list');
         let element = view.render(template, data);
         lists.innerHTML = element;
@@ -39,8 +45,16 @@
     
     http.getData()
         .then((data) => {
+            console.log("Загружвю...");
+            console.log("skills  localStorage = "+localStorage.isDeleted);
+            if(localStorage.isDeleted === "true"){
+                let view = new View();
+                view.showPopUp();
+                console.log("localStorage есть")
+            }
             let child = hi.render('header', data);
             let input = hi.render('searchInput');
+
             abouProf.innerHTML = input;
             div.innerHTML = child;
             return data;
@@ -50,5 +64,5 @@
             inputValue.init();
         });
         
-    div.innerHTML = "подождите..."
+    div.innerHTML = hi.render('loader');
 })(app);
