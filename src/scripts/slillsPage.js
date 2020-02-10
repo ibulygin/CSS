@@ -10,8 +10,8 @@
     function Skills() {
         this.input = document.querySelector('.profession-about__input');
         this.skills = document.querySelector('.profession__list');
-        this.professionList = document.querySelector(".profession__list");
-        this.professionAboutInputContainer = document.querySelector(".profession-about__input-wrapper");
+        this.professionList = document.querySelector('.profession__list');
+        this.professionAboutInputContainer = document.querySelector('.profession-about__input-wrapper');
     };
 
     Skills.prototype.listen = function (data) {
@@ -44,7 +44,7 @@
     function init() {
         http.getData()
             .then((data) => {
-                if (localStorage.isDeleted === "true") {
+                if (localStorage.isDeleted === 'true') {
                     popUp.showPopUp();
                 }
                 let professions = view.render('profession', data);

@@ -1,16 +1,18 @@
 (function () {
-    let HttpService = app.HttpService;
-    let View = app.View;
-    let PopUp = app.PopUp;
-    let popUp = new PopUp();
-    let http = new HttpService();
-    let view = new View();
+    const HttpService = app.HttpService;
+    const View = app.View;
+    const PopUp = app.PopUp;
+    const popUp = new PopUp();
+    const http = new HttpService();
+    const view = new View();
+    const pageContentWrapper = document.querySelector('.page-content__wrapper');
+
     localStorage.isDeleted = false;
-    let pageContentWrapper = document.querySelector('.page-content__wrapper');
+
 
     function getId() {
         let hash = location.hash;
-        return hash.replace('#id=', "");
+        return hash.replace('#id=', '');
     };
 
     function nodeListToArray(nodeList) {
@@ -22,7 +24,7 @@
         let skills = skillType;
         for (let i = 0; i < skills.length; i++) {
             if (skills[i].checked) {
-                return skills[i].value
+                return skills[i].value;
             }
         }
     };
@@ -31,7 +33,7 @@
         let groups = queueGroups;
         for (let i = 0; i < groups.length; i++) {
             if (groups[i].selected === true) {
-                return groups[i].value
+                return groups[i].value;
             }
         }
     };
@@ -41,13 +43,13 @@
             if (item.id === this.id) {
                 item = newElement;
             }
-            return item
+            return item;
         });
         return updatedArray;
     };
 
     function deleteItem(data, id) {
-        return data.filter((item) => item.id !== id)
+        return data.filter((item) => item.id !== id);
     };
 
 
@@ -65,22 +67,20 @@
         this.description = getDataById(data, this.id);
     };
 
-    EditPage.prototype.showChecked = function(data) {
+    EditPage.prototype.showChecked = function (data) {
         let types = this.skillType;
         for (let i = 0; i < types.length; i++) {
-            if(types[i].value === data.type){
+            if (types[i].value === data.type) {
                 types[i].checked = true;
-                console.log()
             }
         }
     };
 
-    EditPage.prototype.showSelected = function(data) {
+    EditPage.prototype.showSelected = function (data) {
         let groups = this.queueGroups;
         for (let i = 0; i < groups.length; i++) {
-            if(groups[i].value === data.selectedQueueGroups){
+            if (groups[i].value === data.selectedQueueGroups) {
                 groups[i].selected = true;
-                console.log("бля")
             }
         }
     }
@@ -131,12 +131,12 @@
 
     EditPage.prototype.getChengeData = function (data) {
         return {
-            "description": data.description,
-            "id": this.id,
-            "name": this.skillName.value,
-            "telephonyQueues": nodeListToArray(this.telephonyQueue),
-            "type": getSkillType(this.skillType),
-            "selectedQueueGroups": getQueueGroups(this.queueGroups)
+            'description': data.description,
+            'id': this.id,
+            'name': this.skillName.value,
+            'telephonyQueues': nodeListToArray(this.telephonyQueue),
+            'type': getSkillType(this.skillType),
+            'selectedQueueGroups': getQueueGroups(this.queueGroups)
         }
 
     };
@@ -145,7 +145,7 @@
         let rezult = null;
         data.map((element => {
             if (element.id === id) {
-                rezult = element
+                rezult = element;
             }
         }))
         return rezult;
@@ -154,8 +154,7 @@
     function init() {
         http.getData()
             .then((data) => {
-                const id = getId();
-                let skillData = getDataById(data, id)
+                let skillData = getDataById(data, getId());
                 let editSkills = view.render('editSkills', skillData);
                 pageContentWrapper.innerHTML = editSkills;
                 return data
