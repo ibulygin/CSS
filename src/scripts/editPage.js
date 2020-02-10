@@ -50,6 +50,8 @@
         return data.filter((item) => item.id !== id)
     };
 
+
+
     function EditPage(data) {
         this.id = getId();
         this.skillName = document.querySelector('.edit-skills__input');
@@ -62,6 +64,26 @@
         this.btnAddTelephonyQueue = document.querySelector('.telephony-queue__button');
         this.description = getDataById(data, this.id);
     };
+
+    EditPage.prototype.showChecked = function(data) {
+        let types = this.skillType;
+        for (let i = 0; i < types.length; i++) {
+            if(types[i].value === data.type){
+                types[i].checked = true;
+                console.log()
+            }
+        }
+    };
+
+    EditPage.prototype.showSelected = function(data) {
+        let groups = this.queueGroups;
+        for (let i = 0; i < groups.length; i++) {
+            if(groups[i].value === data.selectedQueueGroups){
+                groups[i].selected = true;
+                console.log("бля")
+            }
+        }
+    }
 
     EditPage.prototype.listen = function (data) {
         let self = this;
@@ -112,7 +134,6 @@
             "description": data.description,
             "id": this.id,
             "name": this.skillName.value,
-            "queueGroups": nodeListToArray(this.queueGroups),
             "telephonyQueues": nodeListToArray(this.telephonyQueue),
             "type": getSkillType(this.skillType),
             "selectedQueueGroups": getQueueGroups(this.queueGroups)
@@ -136,12 +157,13 @@
                 const id = getId();
                 let skillData = getDataById(data, id)
                 let editSkills = view.render('editSkills', skillData);
-
                 pageContentWrapper.innerHTML = editSkills;
                 return data
             })
             .then((data) => {
                 let editPage = new EditPage(data);
+                editPage.showChecked(getDataById(data, getId()));
+                editPage.showSelected(getDataById(data, getId()));
                 editPage.listen(data);
             })
     };
