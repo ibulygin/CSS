@@ -67,7 +67,7 @@
         this.description = getDataById(data, this.id);
     };
 
-    EditPage.prototype.showChecked = function (data) {
+    EditPage.prototype.showCheckedSkillType = function (data) {
         let types = this.skillType;
         for (let i = 0; i < types.length; i++) {
             if (types[i].value === data.type) {
@@ -76,7 +76,7 @@
         }
     };
 
-    EditPage.prototype.showSelected = function (data) {
+    EditPage.prototype.showSelectedQueueGroups = function (data) {
         let groups = this.queueGroups;
         for (let i = 0; i < groups.length; i++) {
             if (groups[i].value === data.selectedQueueGroups) {
@@ -161,8 +161,8 @@
             })
             .then((data) => {
                 let editPage = new EditPage(data);
-                editPage.showChecked(getDataById(data, getId()));
-                editPage.showSelected(getDataById(data, getId()));
+                editPage.showCheckedSkillType(getDataById(data, getId()));
+                editPage.showSelectedQueueGroups(getDataById(data, getId()));
                 editPage.listen(data);
             })
     };
