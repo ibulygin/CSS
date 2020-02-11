@@ -48,9 +48,6 @@
         return updatedArray;
     };
 
-    function deleteItem(data, id) {
-        return data.filter((item) => item.id !== id);
-    };
 
 
 
@@ -86,7 +83,8 @@
     }
 
     EditPage.prototype.listen = function (data) {
-        let self = this;
+        const self = this;
+
         this.btnSave.addEventListener('click', function () {
             let newObject = updateProperty.call(self, data, self.getChengeData(self.description));
             self.btnSave.innerHTML = view.render('btnLoader');
@@ -106,27 +104,6 @@
             location.replace(url);
 
         });
-
-        popUp.closeBtn.addEventListener('click', function () {
-            popUp.showPopUp();
-        });
-
-        popUp.confirmationBtn.addEventListener('click', function () {
-            let newObj = deleteItem.call(self, data, self.id);
-
-            http.update(newObj)
-                .then(() => {
-                    let url = location.origin;
-                    location.replace(url);
-                })
-
-            localStorage.isDeleted = true;
-
-        });
-
-        popUp.cancelBtn.addEventListener('click', function () {
-            popUp.showPopUp();
-        })
     }
 
     EditPage.prototype.getChengeData = function (data) {
@@ -164,6 +141,7 @@
                 editPage.showCheckedSkillType(getDataById(data, getId()));
                 editPage.showSelectedQueueGroups(getDataById(data, getId()));
                 editPage.listen(data);
+                popUp.listen(data, getId());
             })
     };
 

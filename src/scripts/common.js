@@ -11,6 +11,12 @@
     // Initialize Firebase
     app.firebase = firebase.initializeApp(firebaseConfig);
 
+
+
+    function deleteItem(data, id) {
+        return data.filter((item) => item.id !== id)
+    };
+
     function HttpService() {
         this.firebase = firebase.database();
     };
@@ -51,6 +57,31 @@
 
     PopUp.prototype.showPopUp = function () {
         this.self.classList.toggle('pop-up-template__invisible');
+    };
+
+    PopUp.prototype.listen = function (data, id) {
+        self = this
+        this.closeBtn.addEventListener('click', function () {
+            self.showPopUp();
+        });
+
+        this.confirmationBtn.addEventListener('click', function () {
+            let newObj = deleteItem.call(self, data, id);
+            const http = new HttpService();
+
+            http.update(newObj)
+                .then(() => {
+                    let url = location.origin;
+                    location.replace(url);
+                })
+
+            localStorage.isDeleted = true;
+
+        });
+
+        this.cancelBtn.addEventListener('click', function () {
+            self.showPopUp();
+        })
     }
 
     app.View = View;
